@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngofrontend"
+    }
+  },
+  "defaultProject": "ngofrontend",
+  "cli": {
+    "analytics": "8c323392-1f39-4039-9a2b-f0ffe1c7f12c"
+  }
 }
