@@ -1,130 +1,190 @@
-<div class="wrapper">
-    <form action="" id="wizard">
-        <!-- SECTION 1 -->
-        <h2></h2>
-        <section>
-            <div class="inner">
-                <div class="image-holder">
-                    <img src="assets/img/bg-image-11.jpg" alt="">
-                     </div>
-                
-                <div class="form-content" >
-                    <div class="form-header1">
-                        <h3>Registration</h3>
+  <div class="login-16">
+    <div class="container">
+        <div class="row login-box" >
+            <div class="col-lg-5 col-md-12 bg-img none-992 align-self-center">
+                <div class="info" style=" width:40%; height:600px;">
+                    <div class="logo clearfix" >
+                        <a href="login-16.html">
+                            <img src="assets/img/logos/logo.png" alt="logo" >
+                        </a>
                     </div>
-                    <p>Please fill with your details</p>
-                    <div class="form-row1">
-                        <div class="form-holder1">
-                            <input type="text" placeholder="First Name" class="form-control1">
-                        </div>
-                        <div class="form-holder1">
-                            <input type="text" placeholder="Last Name" class="form-control1">
-                        </div>
+                    <div class="btn-section clearfix">
+                        <a routerLink="/" class="link-btn btn-1">Login</a>
+                        <div class="clearfix"></div>
+                        <a routerLink="/signup" class="link-btn active btn-1 default-bg">Register</a>
                     </div>
-                    <div class="form-row1">
-                        <div class="form-holder1">
-                            <input type="text" placeholder="Your Email" class="form-control1">
-                        </div>
-                        <div class="form-holder1">
-                            <input type="number" placeholder="Phone Number" class="form-control1">
-                        </div>
-                    </div>
-                    <div class="form-row1">
-                        <div class="form-holder1">
-                            <input type="text" placeholder="Age" class="form-control1">
-                        </div>
-                        <div class="form-holder1" style="align-self: flex-end; transform: translateY(4px);">
-                            <div class="checkbox-tick1">
-                                <label class="male">
-                                    <input type="radio" name="gender" value="male" checked> Male<br>
-                                    <span class="checkmark1"></span>
-                                </label>
-                                <label class="female">
-                                    <input type="radio" name="gender" value="female"> Female<br>
-                                    <span class="checkmark1"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="checkbox-circle1">
-                        <label class="l1"> 
-                            <input type="checkbox" checked> Nor again is there anyone who loves or pursues or desires to obtaini.
-                            <span class="checkmark2"></span>
-                        </label>
-                    </div>
+                    <ul class="social-list">
+                        <li>
+                            <a href="#" class="facebook-bg">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter-bg">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="google-bg">
+                                <i class="fa fa-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="linkedin-bg">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pinterest-bg">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
+            <div class="col-lg-7 col-md-12 bg-color-8 align-self-center">
+                <div class="form-section">
+                    <div class="logo-2 clearfix">
+                        <a href="login-16.html">
+                            <img src="assets/img/logos/logo-2.png" alt="logo">
+                        </a>
+                    </div>
+                    <!-- <h3 style="margin-top:-30%;">Registration</h3> -->
+                    
+                    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                      </button> -->
+                      <mat-horizontal-stepper [linear]="isLinear" #stepper  style="margin-top: -8%; width: 111%; margin-left: -8%;">
+                        <mat-step [stepControl]="firstFormGroup" >
+                          <form [formGroup]="firstFormGroup" >
+                            <p>Please fill with your details</p>
 
-        <!-- SECTION 2 -->
-        <h2></h2>
-        <section>
-            <div class="inner">
-                <div class="image-holder">
-                    <img src="assets/img/bg-image-11.jpg" alt="">
-                </div>
-                <div class="form-content">
-                    <div class="form-header">
-                        <h3 style="margin-left:14%">Registration</h3>
-                    </div>
-                    <p>Please fill with additional info</p>
-                    <div class="form-row1">
-                        <div class="form-holder1 w-100">
-                            <input type="text" placeholder="Address" class="form-control1">
-                        </div>
-                    </div>
-                    <div class="form-row1">
-                        <div class="form-holder1">
-                            <input type="text" placeholder="City" class="form-control1">
-                        </div>
-                        <div class="form-holder1">
-                            <input type="text" placeholder="Zip Code" class="form-control1">
-                        </div>
-                    </div>
+                            <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+                            <!-- <mat-form-field > -->
+                              <!-- <mat-label>Name</mat-label> -->
+                              <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                              <div class="form-row1">
+                                <div class="form-holder1">
+                                    <!-- <input type="text" placeholder="First Name" class="form-control1" name="ngo_name" [(ngModel)]="ngo_name"> -->
+                                    <input  type="text" placeholder="Ngo Email" class="form-control1" formControlName="firstCtrl" required name="ngo_email" [(ngModel)]="ngo_email">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Name" class="form-control1" formControlName="firstCtrl" required name="ngo_name" [(ngModel)]="ngo_name">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Password" class="form-control1" formControlName="firstCtrl" required name="ngo_password" [(ngModel)]="ngo_password">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Registration No" class="form-control1" formControlName="firstCtrl" required name="ngo_registration_no" [(ngModel)]="ngo_registration_no">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="file" placeholder="Ngo Logo" class="form-control1" formControlName="firstCtrl" required name="ngo_logo" [(ngModel)]="ngo_logo">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="number" placeholder="Ngo ContactNo" class="form-control1" formControlName="firstCtrl" required name="ngo_contact" [(ngModel)]="ngo_contact">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Address" class="form-control1" formControlName="firstCtrl" required name="ngo_address" [(ngModel)]="ngo_address">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Landmark" class="form-control1" formControlName="firstCtrl" required name="ngo_landmark" [(ngModel)]="ngo_landmark">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo City" class="form-control1" formControlName="firstCtrl" required name="ngo_city" [(ngModel)]="ngo_city"> 
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo State" class="form-control1" formControlName="firstCtrl" required name="ngo_state" [(ngModel)]="ngo_state">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="number" placeholder="Ngo Pincode" class="form-control1" formControlName="firstCtrl" required name="ngo_pincode" [(ngModel)]="ngo_pincode">
+                                </div>
+                                 <!-- <div  *ngFor="let item of country" class ="ds1">
+                                     <label><input type="checkbox"  class="ch1"> {{item}}</label>
+                                </div> -->
+                            </div>
+                              <div>
+                              <button mat-button matStepperNext (click)="onSubmit1()" type="submit" class="btn">Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" >
+                          <form [formGroup]="secondFormGroup">
+                            <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+                            <p>Please fill with Desciption Detail</p>
 
-                    <div class="form-row1">
-                        <div class="select">
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                 
+                                    <input  type="text" placeholder="Ngo Email" class="form-control1" formControlName="secondCtrl" required name="ngo_nop_name" [(ngModel)]="ngo_nop_name">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Name" class="form-control1" formControlName="secondCtrl" required name="ngo_name" [(ngModel)]="ngo_name">
+                                </div>
+                            </div>
+                           
+                            <div>
+                              <button mat-button matStepperPrevious class="btn1">Back</button>
+                              <button mat-button matStepperNext (click)="onSubmit2()" type="submit" class="btn">Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step [stepControl]="thirdFormGroup" >
+                          <form [formGroup]="thirdFormGroup">
+
+                          <!-- <ng-template matStepLabel>Done</ng-template> -->
+                           
+                            <p>Please fill More Information</p>
+                          <div class="form-row1">
                             <div class="form-holder1">
-                                <div class="select-control">Your country</div>
-                                <i class="zmdi zmdi-caret-down"></i>
+                             
+                                <input  type="number" placeholder="Ngo Old Conatct" class="form-control1" formControlName="thirdCtrl" required name="old_donor_contact" [(ngModel)]="old_donor_contact">
                             </div>
-                            <ul class="dropdown">
-                                <li rel="United States">United States</li>
-                                <li rel="United Kingdom">United Kingdom</li>
-                                <li rel="Viet Nam">Viet Nam</li>
-                            </ul>
+                            <div class="form-holder1">
+                                <input type="number" placeholder="Ngo New Contact" class="form-control1" formControlName="thirdCtrl" required name="new_donor_contact" [(ngModel)]="new_donor_contact">
+                            </div>
                         </div>
-                        <div class="form-holder1"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <div class="form-row1">
+                            <div class="form-holder1">
+                             
+                                <input  type="text" placeholder="Ngo Website" class="form-control1" formControlName="thirdCtrl" required name="ngo_website" [(ngModel)]="ngo_website">
+                            </div>
+                            <div class="form-holder1">
+                                <input type="text" placeholder="Ngo Facebook" class="form-control1" formControlName="thirdCtrl" required name="ngo_facebook" [(ngModel)]="ngo_facebook">
+                            </div>
+                        </div>
+                        <div class="form-row1">
+                            <div class="form-holder1">
+                             
+                                <input  type="text" placeholder="Ngo Instagram" class="form-control1" formControlName="thirdCtrl" required name="ngo_instagram" [(ngModel)]="ngo_instagram">
+                            </div>
+                            <div class="form-holder1">
+                                <input type="text" placeholder="Ngo Twiter" class="form-control1" formControlName="thirdCtrl" required name="ngo_twitter" [(ngModel)]="ngo_twitter">
+                            </div>
+                        </div>
 
-        <!-- SECTION 3 -->
-        <h2></h2>
-        <section>
-            <div class="inner">
-                <div class="image-holder">
-                    <img src="assets/img/bg-image-11.jpg" alt="">
-                </div>
-                <div class="form-content">
-                    <div class="form-header">
-                        <h3 style="margin-left:14%">Registration</h3>
-                    </div>
-                    <p>Send an optional message</p>
-                    <div class="form-row1">
-                        <div class="form-holder1 w-100">
-                            <textarea name="" id="" placeholder="Your messagere here!" class="form-control1" style="height: 99px;"></textarea>
-                        </div>
-                    </div>
-                    <div class="checkbox-circle1 mt-24">
-                        <label class="l1">
-                            <input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
-                            <span class="checkmark2"></span>
-                        </label>
-                    </div>
+                          <div>
+                            <button mat-button matStepperPrevious class="btn1">Back</button>
+                            <button mat-button matStepperNext (click)="onSubmit3()" type="submit" class="btn">Done</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                          </div>
+                        </form>
+                        </mat-step>
+                      </mat-horizontal-stepper>
+                    
+
+
                 </div>
             </div>
-        </section>
-    </form>
+        </div>
+    </div>
 </div>

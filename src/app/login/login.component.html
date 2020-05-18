@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row login-box">
             <div class="col-lg-5 col-md-12 bg-img none-992 align-self-center">
-                <div class="info">
+                <div class="info" style=" width:40%; height:600px;">
                     <div class="logo clearfix">
                         <a href="login-16.html">
                             <img src="assets/img/logos/logo.png" alt="logo">
                         </a>
                     </div>
                     <div class="btn-section clearfix">
-                        <a routerLink="/" class="link-btn active btn-1 default-bg"><button class="link-btn active btn-1 default-bg"> Login</button></a>
+                        <a routerLink="/" class="link-btn active btn-1 default-bg">Login</a>
                         <div class="clearfix"></div>
-                        <a routerLink="/signup" class="link-btn btn-1" ><button class="link-btn btn-1" (click)="refresh()">Register</button></a>
+                        <a routerLink="/signup" class="link-btn btn-1" >Register</a>
                     </div>
                     <ul class="social-list">
                         <li>
@@ -51,13 +51,15 @@
                     </div>
                     <h3>Sign into your account</h3>
                     <div class="login-inner-form">
-                        <form action="#" method="GET">
+                        <form (ngSubmit)="addform(f)" #f="ngForm">
                             <div class="form-group form-box">
-                                <input type="email" name="email" class="input-text" placeholder="Email Address" >
+                                
+                                <input type="email" name="ngo_email" class="form-control1" placeholder="Email Address" [(ngModel)]="ngo_email" style="margin-left:22px;width:93%;">
                                 <i class="flaticon-mail-2"></i>
                             </div>
+                            
                             <div class="form-group form-box">
-                                <input type="password" name="Password" class="input-text" placeholder="Password">
+                                <input type="password" name="ngo_password" class="form-control1" placeholder="Password" [(ngModel)]="ngo_password" style="margin-left:22px;width:93%;">
                                 <i class="flaticon-password"></i>
                             </div>
                             <div class="checkbox clearfix">
@@ -70,7 +72,7 @@
                                 <a routerLink="/forget">Forgot Password</a>
                             </div>
                             <div class="form-group mb-0">
-                                <button type="submit" class="btn-md btn-theme btn-block">Login</button>
+                                <button type="submit" class="btn-md btn-theme btn-block" (click)="onSubmit()">Login</button>
                             </div>
                             <p class="text">Don't have an account?<a routerLink="/signup"> Register here</a></p>
                         </form>

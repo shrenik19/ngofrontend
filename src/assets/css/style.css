@@ -74,7 +74,8 @@
 .login-16 .login-inner-form .form-box i {
     position: absolute;
     top: 8px;
-    right: 20px;
+    left:0px;
+    /* right: 20px; */
     font-size: 19px;
     color: #616161;
 }
@@ -236,7 +237,7 @@
 }
 
 .login-16 .btn-section{
-    float: right;
+    /* float: right; */
     display: inline-block;
 }
 
@@ -275,8 +276,7 @@
     width: 100px;
     text-transform: uppercase;
     color: #fff;
-   // border-radius: 5px 0 0 5px;
-   border:none;
+    border-radius: 5px 0 0 5px;
 }
 
 .login-16 .login-inner-form input[type=checkbox], input[type=radio] {
