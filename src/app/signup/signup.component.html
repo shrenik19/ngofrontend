@@ -1,88 +1,188 @@
-<div class="form-body">
-    <div class="website-logo">
-        <a href="index.html">
-            <div class="logo">
-                <img class="logo-size" src="assets/images1/logo-light.svg" alt="">
-            </div>
-        </a>
-    </div>
-    <div class="row">
-        <div class="img-holder">
-            <div class="bg"></div>
-            <div class="info-holder">
-
-            </div>
-        </div>
-        <div class="form-holder">
-            <div class="form-content">
-                <div class="form-items1">
-                    <h3>Get more things done with Loggin platform.</h3>
-                    <p>Access to the most powerfull tool in the entire design and web industry.</p>
-                    <div class="page-links">
-                        <a routerLink="/">Login</a><a routerLink="/register" class="active">Register</a>
+  <div class="login-16">
+    <div class="container">
+        <div class="row login-box" >
+            <div class="col-lg-5 col-md-12 bg-img none-992 align-self-center">
+                <div class="info" style=" width:40%; height:600px;">
+                    <div class="logo clearfix" >
+                        <a href="login-16.html">
+                            <img src="assets/img/logos/logo.png" alt="logo" >
+                        </a>
                     </div>
-                    <form>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-
-                            </div>
-                        </div>
-                   
-                         <!-- <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                        <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                        <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                        <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                        <input class="form-control" type="password" name="password" placeholder="Password" required> -->
-
-                        <div class="form-button">
-                            <button id="submit" type="submit" class="ibtn">Register</button>
-                        </div>
-                    </form>
-                    <div class="other-links">
-                        <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
+                    <div class="btn-section clearfix">
+                        <a routerLink="/" class="link-btn btn-1">Login</a>
+                        <div class="clearfix"></div>
+                        <a routerLink="/signup" class="link-btn active btn-1 default-bg">Register</a>
                     </div>
+                    <ul class="social-list">
+                        <li>
+                            <a href="#" class="facebook-bg">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter-bg">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="google-bg">
+                                <i class="fa fa-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="linkedin-bg">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pinterest-bg">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 bg-color-8 align-self-center">
+                <div class="form-section">
+                    <div class="logo-2 clearfix">
+                        <a href="login-16.html">
+                            <img src="assets/img/logos/logo-2.png" alt="logo">
+                        </a>
+                    </div>
+                    <!-- <h3 style="margin-top:-30%;">Registration</h3> -->
+                    
+                    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                      </button> -->
+                      <mat-horizontal-stepper [linear]="isLinear" #stepper  style="margin-top: -8%; width: 111%; margin-left: -8%;">
+                        <mat-step [stepControl]="firstFormGroup" >
+                          <form [formGroup]="firstFormGroup" >
+                            <p>Please fill with your details</p>
+
+                            <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+                            <!-- <mat-form-field > -->
+                              <!-- <mat-label>Name</mat-label> -->
+                              <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                              <div class="form-row1">
+                                <div class="form-holder1">
+                                    <!-- <input type="text" placeholder="First Name" class="form-control1" name="ngo_name" [(ngModel)]="ngo_name"> -->
+                                    <input  type="text" placeholder="Ngo Email" class="form-control1" formControlName="firstCtrl" required name="ngo_email" [(ngModel)]="ngo_email">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Name" class="form-control1" formControlName="firstCtrl" required name="ngo_name" [(ngModel)]="ngo_name">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Password" class="form-control1" formControlName="firstCtrl" required name="ngo_password" [(ngModel)]="ngo_password">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Registration No" class="form-control1" formControlName="firstCtrl" required name="ngo_registration_no" [(ngModel)]="ngo_registration_no">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="file" placeholder="Ngo Logo" class="form-control1" formControlName="firstCtrl" required name="ngo_logo" [(ngModel)]="ngo_logo">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="number" placeholder="Ngo ContactNo" class="form-control1" formControlName="firstCtrl" required name="ngo_contact" [(ngModel)]="ngo_contact">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Address" class="form-control1" formControlName="firstCtrl" required name="ngo_address" [(ngModel)]="ngo_address">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Landmark" class="form-control1" formControlName="firstCtrl" required name="ngo_landmark" [(ngModel)]="ngo_landmark">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo City" class="form-control1" formControlName="firstCtrl" required name="ngo_city" [(ngModel)]="ngo_city"> 
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo State" class="form-control1" formControlName="firstCtrl" required name="ngo_state" [(ngModel)]="ngo_state">
+                                </div>
+                            </div>
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                    <input type="number" placeholder="Ngo Pincode" class="form-control1" formControlName="firstCtrl" required name="ngo_pincode" [(ngModel)]="ngo_pincode">
+                                </div>
+                                 <!-- <div  *ngFor="let item of country" class ="ds1">
+                                     <label><input type="checkbox"  class="ch1"> {{item}}</label>
+                                </div> -->
+                            </div>
+                              <div>
+                              <button mat-button matStepperNext (click)="onSubmit1()" type="submit" class="btn">Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" >
+                          <form [formGroup]="secondFormGroup">
+                            <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+                            <p>Please fill with Desciption Detail</p>
+
+                            <div class="form-row1">
+                                <div class="form-holder1">
+                                 
+                                    <input  type="text" placeholder="Ngo Email" class="form-control1" formControlName="secondCtrl" required name="ngo_nop_name" [(ngModel)]="ngo_nop_name">
+                                </div>
+                                <div class="form-holder1">
+                                    <input type="text" placeholder="Ngo Name" class="form-control1" formControlName="secondCtrl" required name="ngo_name" [(ngModel)]="ngo_name">
+                                </div>
+                            </div>
+                           
+                            <div>
+                              <button mat-button matStepperPrevious class="btn1">Back</button>
+                              <button mat-button matStepperNext (click)="onSubmit2()" type="submit" class="btn">Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step [stepControl]="thirdFormGroup" >
+                          <form [formGroup]="thirdFormGroup">
+
+                          <!-- <ng-template matStepLabel>Done</ng-template> -->
+                           
+                            <p>Please fill More Information</p>
+                          <div class="form-row1">
+                            <div class="form-holder1">
+                             
+                                <input  type="number" placeholder="Ngo Old Conatct" class="form-control1" formControlName="thirdCtrl" required name="old_donor_contact" [(ngModel)]="old_donor_contact">
+                            </div>
+                            <div class="form-holder1">
+                                <input type="number" placeholder="Ngo New Contact" class="form-control1" formControlName="thirdCtrl" required name="new_donor_contact" [(ngModel)]="new_donor_contact">
+                            </div>
+                        </div>
+                        <div class="form-row1">
+                            <div class="form-holder1">
+                             
+                                <input  type="text" placeholder="Ngo Website" class="form-control1" formControlName="thirdCtrl" required name="ngo_website" [(ngModel)]="ngo_website">
+                            </div>
+                            <div class="form-holder1">
+                                <input type="text" placeholder="Ngo Facebook" class="form-control1" formControlName="thirdCtrl" required name="ngo_facebook" [(ngModel)]="ngo_facebook">
+                            </div>
+                        </div>
+                        <div class="form-row1">
+                            <div class="form-holder1">
+                             
+                                <input  type="text" placeholder="Ngo Instagram" class="form-control1" formControlName="thirdCtrl" required name="ngo_instagram" [(ngModel)]="ngo_instagram">
+                            </div>
+                            <div class="form-holder1">
+                                <input type="text" placeholder="Ngo Twiter" class="form-control1" formControlName="thirdCtrl" required name="ngo_twitter" [(ngModel)]="ngo_twitter">
+                            </div>
+                        </div>
+
+                          <div>
+                            <button mat-button matStepperPrevious class="btn1">Back</button>
+                            <button mat-button matStepperNext (click)="onSubmit3()" type="submit" class="btn">Done</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                          </div>
+                        </form>
+                        </mat-step>
+                      </mat-horizontal-stepper>
+                    
+
+
                 </div>
             </div>
         </div>
