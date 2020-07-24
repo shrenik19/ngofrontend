@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { sendmail } from '../classes/sendmail';
+import { login } from '../classes/login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private login_url='http://localhost:3000/login/';
+  private login_url='http://localhost:3000/validlogin/';
   private forget_password_url='http://localhost:3000/forgetpassword/'
   constructor(private _http:HttpClient) { }
 
-  login(item:FormData)
+  validlogin(item:login)
   {
-    console.log(item.get('ngo_email'));
-    return this._http.post(this.login_url+item.get('ngo_email'),item);
+    //console.log(item.get('ngo_email'));
+    console.log(item);
+    let body=JSON.stringify(item);
+    let head1=new HttpHeaders().set('content-type','application/json');
+    return this._http.post(this.login_url,body,{headers:head1});
   }
   getPasswordById(ngo_email:string)
   {

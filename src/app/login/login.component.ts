@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ngo } from '../classes/ngo';
 import { RegistrationService } from '../service/registeration.service';
 import { LoginService } from '../service/login.service';
+import { login } from '../classes/login';
 
 @Component({
   selector: 'app-login',
@@ -37,14 +38,14 @@ ngo_password:string;
     fd.append('ngo_email',this.ngo_email);
     fd.append('ngo_password',this.ngo_password);
 
-    this._loginser.login(fd).subscribe(
+    this._loginser.validlogin(new login(this.ngo_email,this.ngo_password)).subscribe(
       (data:any)=>
       {
         if(data.length==1)
         {
           alert("Login Successfull");
           localStorage.setItem('ngo_email',this.ngo_email);
-          this._route.navigate(["/register"]);
+          //this._route.navigate(["/register"]);
 
         }
         else
