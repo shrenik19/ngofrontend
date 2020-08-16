@@ -1,4 +1,4 @@
-<div class="page-content" style="height:657px;">
+<div class="page-content"> <!--style="height:657px;"-->
   <div class="form-v1-content">
     <div class="wizard-form">
 
@@ -7,23 +7,50 @@
       <section>
         <div class="inner">
 
-          <form (ngSubmit)="addform(f)" #f="ngForm" style="height:300px;margin-left: 10%;margin-right: 10%;margin-top:10%; margin-bottom: 10%;">
+          <form (ngSubmit)="addform(f)" #f="ngForm" style="height:60vh;margin-left: 10%;margin-right: 10%;margin-top:10%; margin-bottom: 10%;">
             <p style="text-align: center;"><b>LOGIN</b></p>
+
             <div class="form-row">
               <div class="form-holder form-holder-2">
                 <fieldset>
                   <legend>Your Email </legend>
-                  <input type="text" placeholder="Your Email" class="form-control" required name="ngo_email" [(ngModel)]="ngo_email">
+                  <!-- <mat-form-field> -->
+                  <!-- <input type="email" placeholder="Your Email" class="form-control" required name="ngo_email" [(ngModel)]="ngo_email"> -->
+                  <input  #email="ngModel" type="email" [(ngModel)]="ngo_email" name="ngo_email" placeholder="Email"
+                            [class.is-invalid]="email.invalid && email.touched" required
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+                  <!-- </mat-form-field> -->
                 </fieldset>
+                <div class="form-group">
+                  <span *ngIf="email.errors && (email.invalid || email.touched) && email.errors.pattern">
+                    Please enter a valid email address.</span>
+                  <span *ngIf="email.errors && (email.invalid && email.touched) && email.errors.required">Email is required.</span>
+                </div>
               </div>
             </div>
+
+            <!-- <mat-form-field style="width: 300px;color:#0A0906">
+              <input matInput #user_id1="ngModel"
+              [(ngModel)]="email_id"
+              name="email_id"
+               placeholder="  Enter Email_id"
+               required  style="width: 300px;">
+               <mat-error> Email is required</mat-error>
+              </mat-form-field> -->
 
             <div class="form-row">
               <div class="form-holder form-holder-2">
                 <fieldset>
                   <legend>Your Password </legend>
-                  <input type="password" placeholder="Your Password" class="form-control" required [(ngModel)]="ngo_password" name="ngo_password">
+                  <!-- <input type="password" placeholder="Your Password" class="form-control" required [(ngModel)]="ngo_password" name="ngo_password"> -->
+                  <input  #password="ngModel" type="password" [(ngModel)]="ngo_password" name="ngo_password" placeholder="Password" [class.is-invalid]="password.invalid && password.touched" required>
+                    <!-- pattern="^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"> -->
                 </fieldset>
+                <div class="form-group">
+                  <!-- <span *ngIf="password.errors && (password.invalid || password.touched) && password.errors.pattern">Please enter a minimum 8 to 10 character Password.</span> -->
+                  <span *ngIf="password.errors && (password.invalid && password.touched) && password.errors.required">Password is required.</span>
+                </div>
               </div>
             </div>
             <div>
