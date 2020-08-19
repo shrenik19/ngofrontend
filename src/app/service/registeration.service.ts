@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ngo } from '../classes/ngo';
 import { sendmail } from '../classes/sendmail';
 import { register1 } from '../classes/register1_class';
+import { register3 } from '../classes/register3_class';
 
 @Injectable({
   providedIn: 'root'
@@ -31,16 +32,20 @@ export class RegistrationService {
   {
     // let body=JSON.stringify(item);
     // let head1=new HttpHeaders().set('Content-Type','application/json');
-
+    console.log(item);
     return this._http.post(this.register1_url,item);
   }
   add_nop_description(item:FormData)
   {
+    console.log(item);
     return this._http.post(this.register2_url,item);
   }
-  add_final_details(item:FormData)
+  add_final_details(item:register3)
   {
-    return this._http.post(this.register3_url,item);
+    let body=JSON.stringify(item);
+    let head1=new HttpHeaders().set('Content-Type','application/json');
+    console.log(item);
+    return this._http.post(this.register3_url,body,{headers:head1});
   }
   getnopbyemail(ngo_email)
   {

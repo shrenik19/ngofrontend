@@ -34,10 +34,10 @@ ngo_password:string;
     // });
     console.log(this.ngo_email);
     console.log(this.ngo_password);
-    var fd=new FormData();
-    fd.append('ngo_email',this.ngo_email);
-    fd.append('ngo_password',this.ngo_password);
-
+    //var fd=new FormData();
+    //fd.append('ngo_email',this.ngo_email);
+    //fd.append('ngo_password',this.ngo_password);
+    //this._route.navigate(["/menu/tables"]);
     this._loginser.validlogin(new login(this.ngo_email,this.ngo_password)).subscribe(
       (data:any)=>
       {
@@ -45,11 +45,13 @@ ngo_password:string;
         {
           alert("Login Successfull");
           localStorage.setItem('ngo_email',this.ngo_email);
-          //this._route.navigate(["/register"]);
+          this._route.navigate(["/menu/tables"]);
 
         }
         else
         {
+         
+
           alert("Incorrect Login Or Password");
         }
       });

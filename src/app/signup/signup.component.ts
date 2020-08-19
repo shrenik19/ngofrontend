@@ -5,6 +5,7 @@ import { register1 } from '../classes/register1_class';
 import { RegistrationService } from '../service/registeration.service';
 import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select';
 import { register2 } from '../classes/register2_class';
+import { register3 } from '../classes/register3_class';
 
 @Component({
   selector: 'app-signup',
@@ -70,7 +71,7 @@ export class SignupComponent implements OnInit {
     (data:any)=>{
 
       this.nop_arr=data;
-
+      console.log(data)
 
     }
     );
@@ -120,12 +121,14 @@ export class SignupComponent implements OnInit {
     fd.append('ngo_pincode',this.ngo_pincode);
     fd.append('fk_ngo_nop_name',this.fk_ngo_nop_name);
 
+    console.log('fd',JSON.stringify(fd));
+
     this._registrationservice.register1(fd).subscribe(
     (data:register1[])=>
     {
 
       console.log(data);
-      localStorage.setItem('ngo_email',this.ngo_email);
+      // localStorage.setItem('ngo_email',this.ngo_email);
 
     }
     );
@@ -143,17 +146,19 @@ export class SignupComponent implements OnInit {
       }
       );
     }
-
+console.log(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter);
     var fd2=new FormData();
-    fd2.append('fk_ngo_email',this.ngo_email);
-    fd2.append('contact_for_donor',this.contact_for_donor);
-    fd2.append('ngo_website',this.ngo_website);
-    fd2.append('ngo_facebook',this.ngo_facebook);
-    fd2.append('ngo_instagram',this.ngo_instagram);
-    fd2.append('ngo_twitter',this.ngo_twitter);
+    // fd2.append('fk_ngo_email','jay@gmail.comcheck');
+    // fd2.append('contact_for_donor',this.contact_for_donor);
+    // fd2.append('ngo_website',this.ngo_website);
+    // fd2.append('ngo_facebook',this.ngo_facebook);
+    // fd2.append('ngo_instagram',this.ngo_instagram);
+    // fd2.append('ngo_twitter',this.ngo_twitter);
 
-    this._registrationservice.add_final_details(fd2).subscribe(
-    (data:any)=>{
+    //console.log(JSON.stringify(fd2));
+
+    this._registrationservice.add_final_details(new register3(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter)).subscribe(
+    (data:register3[])=>{
       console.log(data);
     }
     );

@@ -1,0 +1,69 @@
+<div class="container" >
+  <!-- <div class="row">
+    <div class="col-md-12">
+    <h4><b>Product Mangement</b></h4>
+    </div>
+  </div> -->
+  <div>&nbsp;</div>
+  <div class="row">
+    <div class="col-md-10">
+      <!-- <button mat-raised-button color="primary" (click)="onall()">All</button> -->
+      <button mat-raised-button color="primary" style="margin-left: 10px;" *ngFor="let item of nop_arr" (click)="onNopName(item.nop_name)">{{item.nop_name}}</button>
+    </div>
+    <!-- <div class="col-md-2">
+      <div>
+        <button mat-raised-button color="primary" (click)="onAddProduct()">
+          <mat-icon>add</mat-icon>ADD PRODUCT</button>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div>&nbsp;</div>
+
+
+<mat-form-field style="width:500px;margin-left: 380px;">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Name">
+</mat-form-field>
+<div class="mat-elevation-z8 data-table">
+  <table mat-table class="full-width-table" matSort  [dataSource]="dataSource" >
+    <!-- Id Column -->
+    <ng-container matColumnDef="pay_to_ngo_email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngo_Email</th>
+      <th mat-header-cell *matHeaderCellDef> Ngo_Email </th>
+      <td mat-cell *matCellDef="let row">{{row.pay_to_ngo_email}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ngo_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngo_Name</th>
+      <th mat-header-cell *matHeaderCellDef>Ngo_Name </th>
+      <td mat-cell *matCellDef="let row">{{row.ngo_name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ngo_contact">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngo_Contact</th>
+      <th mat-header-cell *matHeaderCellDef> Ngo_Contact</th>
+      <td mat-cell *matCellDef="let row">{{row.ngo_contact}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Total_Amt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let row">{{row.Total_Amt}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15, 20]">
+  </mat-paginator>
+</div>
+
+
+
+
