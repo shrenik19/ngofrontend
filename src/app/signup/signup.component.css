@@ -1,7 +1,17 @@
+#btn_green
+{
+  background-color: green;
+  color:#fff;
+  border-radius: 5px;
+}
+#ngo_address
+{
+    outline-color: white;
+}
 .mat-stepper-vertical {
     margin-top: 8px;
   }
-  
+
   .mat-form-field {
     margin-top: 16px;
   }
@@ -45,7 +55,7 @@ background-color:#B2D2A4;
     height:14px;
     width:18px;
    }
-   
+
    .ns1
    {
     font-family: "Muli-Regular";

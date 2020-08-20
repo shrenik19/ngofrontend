@@ -14,6 +14,12 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {DemoMaterialModule} from './signup/material.module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MenuComponent } from './menu/menu.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
@@ -22,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SignupComponent,
     ForgetpasswordComponent,
+    DataTableComponent,
+    MenuComponent,
+    ChartComponent,
 
   ],
   imports: [
@@ -33,6 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DemoMaterialModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
 
     
   ],

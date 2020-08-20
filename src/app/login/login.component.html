@@ -1,4 +1,68 @@
-<div class="login-16">
+<div class="page-content" style="height:657px;">
+  <div class="form-v1-content">
+    <div class="wizard-form">
+
+
+
+      <section>
+        <div class="inner">
+
+          <form (ngSubmit)="addform(f)" #f="ngForm" style="height:300px;margin-left: 10%;margin-right: 10%;margin-top:10%; margin-bottom: 10%;">
+            <p style="text-align: center;"><b>LOGIN</b></p>
+            <div class="form-row">
+              <div class="form-holder form-holder-2">
+                <fieldset>
+                  <legend>Your Email </legend>
+                  <input type="text" placeholder="Your Email" class="form-control" required name="ngo_email" [(ngModel)]="ngo_email">
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-holder form-holder-2">
+                <fieldset>
+                  <legend>Your Password </legend>
+                  <input type="password" placeholder="Your Password" class="form-control" required [(ngModel)]="ngo_password" name="ngo_password">
+                </fieldset>
+              </div>
+            </div>
+            <div>
+              <a style="float:right;" routerLink="/forget">Forgot Password</a>
+              <br>
+              <br>
+            </div>
+            <div class="form-group mb-0">
+              <button type="submit" class="btn-md btn-theme btn-block"
+                (click)="onSubmit()" style="width:100%;background-color: green;border-radius: 5px;color:#fff;"><b>LOGIN</b></button>
+            </div>
+            <br>
+            <div>
+              <p>Don't have an account?<a routerLink="/signup"><u> Register here</u></a></p>
+              <p>Don't have an account?<a routerLink="/menu"><u> Register here</u></a></p>
+            </div>
+
+
+          </form>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="login-16" >
     <div class="container">
         <div class="row login-box">
             <div class="col-lg-5 col-md-12 bg-img none-992 align-self-center">
@@ -53,11 +117,11 @@
                     <div class="login-inner-form">
                         <form (ngSubmit)="addform(f)" #f="ngForm">
                             <div class="form-group form-box">
-                                
+
                                 <input type="email" name="ngo_email" class="form-control1" placeholder="Email Address" [(ngModel)]="ngo_email" style="margin-left:22px;width:93%;">
                                 <i class="flaticon-mail-2"></i>
                             </div>
-                            
+
                             <div class="form-group form-box">
                                 <input type="password" name="ngo_password" class="form-control1" placeholder="Password" [(ngModel)]="ngo_password" style="margin-left:22px;width:93%;">
                                 <i class="flaticon-password"></i>
@@ -82,4 +146,4 @@
         </div>
     </div>
 </div>
-<!-- Login 16 end -->
+ -->
