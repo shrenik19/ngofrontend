@@ -18,20 +18,21 @@ ngo_password:string;
   onSubmit()
   {
 
-    // console.log(this.ngo_email);
-    // console.log(this.ngo_password);
-    // this._ngo.getLogin(new ngo(this.ngo_email,this.ngo_password)).subscribe((data: any) => {
-    //   console.log(data);
-    //   if (data.length === 1) {
-    //     alert('Login Succesfully...');
-    //     this._route.navigate(["/forget"]);
-    //   }
-    //     else {
-    //     console.log(this.ngo_email);
-    //     console.log(this.ngo_password);
-    //     alert("The Email_Id Or the Password is wrong");
-    //   }
-    // });
+    /*console.log(this.ngo_email);
+    console.log(this.ngo_password);
+    this._loginser.login(new ngo(this.ngo_email,this.ngo_password)).subscribe((data: any) => {
+      console.log(data);
+      if (data.length === 1) {
+        alert('Login Succesfully...');
+        this._route.navigate(["/forget"]);
+      }
+        else {
+        console.log(this.ngo_email);
+        console.log(this.ngo_password);
+        alert("The Email_Id Or the Password is wrong");
+      }
+    });*/
+
     console.log(this.ngo_email);
     console.log(this.ngo_password);
     //var fd=new FormData();

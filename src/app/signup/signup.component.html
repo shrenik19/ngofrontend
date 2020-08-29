@@ -187,6 +187,51 @@
                      *ngFor="let item of arr">
                   <span *ngIf="arrofnop.errors && (arrofnop.invalid && arrofnop.touched) && arrofnop.errors.required">Please select atleast 1 Nature of Product.</span>
                   <span *ngIf="!(arr?.length > 0)">Please select atleast 1 Nature of Product.</span>
+<<<<<<< HEAD
+=======
+                </div>
+              </ng-container> -->
+
+
+              <!-- <ng-container [formGroup]="form">
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox1" id="checkbox1" *ngFor="let item of arr">
+
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox2" id="checkbox2" *ngFor="let item of arr">
+
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox3" id="checkbox3" *ngFor="let item of arr">
+
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox4" id="checkbox4" *ngFor="let item of arr">
+
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox5" id="checkbox5" *ngFor="let item of arr">
+
+                    </mat-checkbox>
+                  </div>
+                </ng-container> -->
+
+
+                <!-- <div formArrayName="'items'">
+                  <div *ngFor="let control of form.controls.items.controls; let i = index;" [formGroup]="control">
+                    <input type="checkbox" formControlName="checkbox" id="{{ control.controls.id.value }}">
+                    <label attr.for="{{ control.controls.id.value }}">{{ control.controls.text.value }}</label>
+                  </div>
+>>>>>>> fefe488e16d3d38179c284c044f70476b62e2234
                 </div>
               </ng-container> -->
 
@@ -215,12 +260,15 @@
                 </ng-container> -->
 
 
+<<<<<<< HEAD
                 <!-- <div formArrayName="'items'">
                   <div *ngFor="let control of form.controls.items.controls; let i = index;" [formGroup]="control">
                     <input type="checkbox" formControlName="checkbox" id="{{ control.controls.id.value }}">
                     <label attr.for="{{ control.controls.id.value }}">{{ control.controls.text.value }}</label>
                   </div>
                 </div>
+=======
+>>>>>>> fefe488e16d3d38179c284c044f70476b62e2234
                 <div [class.invalid]="!form.controls.selectedItems.valid" *ngIf="!form.controls.selectedItems.valid">
                   checkbox group is required!
                 </div>

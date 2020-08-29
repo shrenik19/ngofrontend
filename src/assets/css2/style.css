@@ -1,6 +1,7 @@
 body {
 	margin:  0;
 }
+
 .page-content {
 	width: 100%;
 	margin:  0 auto;
@@ -15,7 +16,9 @@ body {
 	-o-align-items: center;
 	-ms-align-items: center;
 	-moz-align-items: center;
-	-webkit-align-items: center;
+  -webkit-align-items: center;
+  /*background: rgba(0, 0, 0, 0.04) url(../img/bg-image-12.jpg) top left repeat;
+  height: 100%;*/
     background-image: -moz-linear-gradient( 136deg, rgb(116,235,213) 0%, rgb(63,43,150) 100%);
     background-image: -webkit-linear-gradient( 136deg, rgb(116,235,213) 0%, rgb(63,43,150) 100%);
     background-image: -ms-linear-gradient( 136deg, rgb(116,235,213) 0%, rgb(63,43,150) 100%);

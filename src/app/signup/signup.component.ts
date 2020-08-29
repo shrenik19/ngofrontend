@@ -114,6 +114,15 @@ export class SignupComponent implements OnInit {
     }
   });*/
 
+    /*this.form.setErrors({required: true});
+    this.form.valueChanges.subscribe((newValue) => {
+    if (newValue.checkbox1 === false || newValue.checkbox2 === false || newValue.checkbox3 === false) {
+      this.form.setErrors(null);
+    } else {
+      this.form.setErrors({required: false});
+    }
+  });*/
+
     this._registrationservice.getallnop().subscribe(
     (data:any)=>{
 
