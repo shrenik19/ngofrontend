@@ -1,4 +1,4 @@
-<div class="page-content">
+<div class="page-content" >
   <div class="form-v1-content">
     <div class="wizard-form">
 
@@ -6,24 +6,35 @@
         <div class="inner">
 
           <mat-horizontal-stepper [linear]="isLinear" #stepper style="margin-top: 0%; width: 111%; margin-left: -8%;">
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
+            <!-- <mat-step [stepControl]="firstFormGroup"> -->
+              <mat-step>
+              <form (ngSubmit)="addform(f)" #f="ngForm">
                 <ng-template matStepLabel>Basic Details</ng-template>
                 <p>Please fill with your details</p>
                 <div class="form-row">
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Name</legend>
-                      <input type="text"  placeholder="Ngo Name" class="form-control"
-                        formControlName="firstCtrl" required name="ngo_name" [(ngModel)]="ngo_name">
+                      <!-- <input type="text"  placeholder="Ngo Name" class="form-control"
+                        formControlName="firstCtrl" required name="ngo_name" [(ngModel)]="ngo_name" -->
+                      <input class="form-control" #ngoname="ngModel"  type="text" [(ngModel)]="ngo_name" name="ngo_name" placeholder="NGO Name" [class.is-invalid]="ngoname.invalid && ngoname.touched" required
+                              pattern="[a-zA-Z ]{3,}" [ngModelOptions]="{standalone: true}">
+
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngoname.errors && (ngoname.invalid || ngoname.touched) && ngoname.errors.pattern">Please enter a valid Name.</span>
+                      <span *ngIf="ngoname.errors && (ngoname.invalid && ngoname.touched) && ngoname.errors.required">Name is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO LOGO</legend>
-                      <input type="file" placeholder="Ngo Logo" (change)="onselect($event)" class="form-control"
-                        formControlName="firstCtrl" required name="ngo_logo" selectedFile="ngo_logo">
+                      <input class="form-control" #ngologo="ngModel" [(ngModel)]="ngo_logo" type="file" placeholder="Ngo Logo" (change)="onselect($event)"
+                      [class.is-invalid]="ngologo.invalid && ngologo.touched" required name="ngo_logo" selectedFile="ngo_logo">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngologo.errors && (ngologo.invalid && ngologo.touched) && ngologo.errors.required">Please select an Image.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -31,17 +42,25 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Registration No.</legend>
-                      <input type="text" placeholder="NGO Registration Number" class="form-control"
-                        formControlName="firstCtrl" required name="ngo_registration_no"
-                        [(ngModel)]="ngo_registration_no">
+                      <input class="form-control" type="number" placeholder="NGO Registration Number" class="form-control" #ngoregno="ngModel"
+                         required name="ngo_registration_no" [(ngModel)]="ngo_registration_no" [class.is-invalid]="ngoregno.invalid && ngoregno.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngoregno.errors && (ngoregno.invalid || ngoregno.touched) && ngoregno.errors.pattern">Please enter a valid Number.</span>
+                      <span *ngIf="ngoregno.errors && (ngoregno.invalid && ngoregno.touched) && ngoregno.errors.required">Number is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Contact NO.</legend>
-                      <input type="text" placeholder="+1 888-999-7777" class="form-control" formControlName="firstCtrl"
-                        required name="ngo_contact" [(ngModel)]="ngo_contact">
+                      <input #ngocontact="ngModel" type="num  ber" placeholder="888-999-7777" class="form-control" required
+                        name="ngo_contact" [(ngModel)]="ngo_contact" [class.is-invalid]="ngocontact.invalid && ngocontact.touched"
+                        pattern="^((\\+91-?)|0)?[0-9]{10,14}$">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngocontact.errors && (ngocontact.invalid || ngocontact.touched) && ngocontact.errors.pattern">Please enter a valid Number.</span>
+                      <span *ngIf="ngocontact.errors && (ngocontact.invalid && ngocontact.touched) && ngocontact.errors.required">Number is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -49,17 +68,24 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Email</legend>
-                      <input type="text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Ngo Email"
-                        class="form-control" formControlName="firstCtrl" required name="ngo_email"
-                        [(ngModel)]="ngo_email">
+                      <input #ngoemail="ngModel" type="text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Ngo Email" required
+                        class="form-control" name="ngo_email" [class.is-invalid]="ngoemail.invalid && ngoemail.touched"
+                        [(ngModel)]="ngo_email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngoemail.errors && (ngoemail.invalid || ngoemail.touched) && ngoemail.errors.pattern">Please enter a valid Email ID.</span>
+                      <span *ngIf="ngoemail.errors && (ngoemail.invalid && ngoemail.touched) && ngoemail.errors.required">Email ID is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Password</legend>
-                      <input type="password" placeholder="Ngo Password" class="form-control" formControlName="firstCtrl"
-                        required name="ngo_password" [(ngModel)]="ngo_password">
+                      <input #ngopassword="ngModel" type="password" placeholder="Ngo Password" class="form-control" required
+                        name="ngo_password" [(ngModel)]="ngo_password" [class.is-invalid]="ngopassword.invalid && ngopassword.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngopassword.errors && (ngopassword.invalid && ngopassword.touched) && ngopassword.errors.required">Password is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -67,24 +93,30 @@
                   <div class="form-holder form-holder-2">
                     <fieldset>
                       <legend>PAYTM Registration No. </legend>
-                      <input type="text" placeholder="PAYTM Merchant ID" class="form-control"
-                        formControlName="firstCtrl" required name="paytm_merchant_id" [(ngModel)]="paytm_merchant_id">
+                      <input #paytm="ngModel" type="text" placeholder="PAYTM Merchant ID" class="form-control" required
+                        name="paytm_merchant_id" [(ngModel)]="paytm_merchant_id" [class.is-invalid]="paytm.invalid && paytm.touched"
+                        pattern="[a-zA-Z0-9]{20}">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="paytm.errors && (paytm.invalid || paytm.touched) && paytm.errors.pattern">Please enter a valid Merchant ID.</span>
+                      <span *ngIf="paytm.errors && (paytm.invalid && paytm.touched) && paytm.errors.required">Merchant ID is required.</span>
+                    </div>
                   </div>
                 </div>
 
-                <p style="text-align: center;"><b>ADRESS DETAILS</b></p>
+                <p style="text-align: center;"><b>ADDRESS DETAILS</b></p>
 
                 <div class="form-row">
                   <div class="form-holder form-holder-2">
                     <fieldset>
-                      <legend>NGO Adress</legend>
-                      <textarea placeholder="Enter Address Here..." id="ngo_address"
-                        class="form-control" formControlName="firstCtrl" required
-                        style="border:0px;outline-color: white;" name="ngo_Address" rows="5" cols="30"
-                        [(ngModel)]="ngo_address"></textarea>
-
+                      <legend>NGO Address</legend>
+                      <textarea #ngoaddress="ngModel" placeholder="Enter Address Here..." id="ngo_address" class="form-control"
+                        required style="border:0px;outline-color: white;" name="ngo_Address" rows="5" cols="30"
+                        [(ngModel)]="ngo_address" [class.is-invalid]="ngoaddress.invalid && ngoaddress.touched"></textarea>
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngoaddress.errors && (ngoaddress.invalid && ngoaddress.touched) && ngoaddress.errors.required">Ngo Address is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -92,16 +124,24 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Landmark</legend>
-                      <input type="text" placeholder="Ngo Landmark" class="form-control" formControlName="firstCtrl"
-                        required name="ngo_landmark" [(ngModel)]="ngo_landmark">
+                      <input #ngolandmark="ngModel" type="text" placeholder="Ngo Landmark" class="form-control" name="ngo_landmark"
+                        required [(ngModel)]="ngo_landmark" [class.is-invalid]="ngoaddress.invalid && ngoaddress.touched"
+                        pattern="[a-zA-Z0-9]{1,}">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngolandmark.errors && (ngolandmark.invalid && ngolandmark.touched) && ngolandmark.errors.required">Landmark is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO City</legend>
-                      <input type="text" placeholder="Ngo City" class="form-control" formControlName="firstCtrl"
-                        required name="ngo_city" [(ngModel)]="ngo_city">
+                      <input #ngocity="ngModel" type="text" placeholder="Ngo City" class="form-control" name="ngo_city" required
+                        [(ngModel)]="ngo_city" [class.is-invalid]="ngocity.invalid && ngocity.touched" pattern="[a-zA-Z]{1,}">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngocity.errors && (ngocity.invalid || ngocity.touched) && ngocity.errors.pattern">Please enter a valid City name.</span>
+                      <span *ngIf="ngocity.errors && (ngocity.invalid && ngocity.touched) && ngocity.errors.required">City name is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -109,16 +149,24 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO State</legend>
-                      <input type="text" placeholder="Ngo State" class="form-control" formControlName="firstCtrl"
-                        required name="ngo_state" [(ngModel)]="ngo_state">
+                      <input #ngostate="ngModel" type="text" placeholder="Ngo State" class="form-control" required name="ngo_state"
+                        [(ngModel)]="ngo_state" [class.is-invalid]="ngostate.invalid && ngostate.touched" pattern="[a-zA-Z]{1,}">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngostate.errors && (ngostate.invalid || ngostate.touched) && ngostate.errors.pattern">Please enter a valid State name.</span>
+                      <span *ngIf="ngostate.errors && (ngostate.invalid && ngostate.touched) && ngostate.errors.required">State name is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Pincode</legend>
-                      <input type="text" maxlength="6" minlength="6" placeholder="Ngo Pincode" class="form-control"
-                        formControlName="firstCtrl" required name="ngo_pincode" [(ngModel)]="ngo_pincode">
+                      <input #ngopincode="ngModel" type="number" placeholder="Ngo Pincode" class="form-control" name="ngo_pincode" required
+                        [(ngModel)]="ngo_pincode" [class.is-invalid]="ngopincode.invalid && ngopincode.touched" pattern="[0-9]{6}">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngopincode.errors && (ngopincode.invalid || ngopincode.touched) && ngopincode.errors.pattern">Please enter a valid Pincode.</span>
+                      <span *ngIf="ngopincode.errors && (ngopincode.invalid && ngopincode.touched) && ngopincode.errors.required">Pincode is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -128,21 +176,70 @@
                 <div *ngFor="let item of nop_arr">
                   <label class="form-control"
                     style="font-family: 'Open Sans','sans-serif';font-weight: 600;font-size: 14px;color: #333;">
-                    <input type="checkbox" class="form-control" (click)="nopmanage($event)" name="{{item.nop_name}}" [value]="item.nop_name"><b> {{item.nop_name}}</b></label>
-                </div>
+                    <input  type="checkbox" class="form-control" (click)="nopmanage($event)" name="{{item.nop_name}}" required
+                     [value]="item.nop_name">
+                    <b> {{item.nop_name}}</b>
+                  </label>
 
+                </div>
+                <!-- <ng-container [formGroup]="form">
+                <div class="form-group" #arrofnop="ngModel" [(ngModel)]="arr" [class.is-invalid]="arrofnop.invalid && arrofnop.touched"
+                     *ngFor="let item of arr">
+                  <span *ngIf="arrofnop.errors && (arrofnop.invalid && arrofnop.touched) && arrofnop.errors.required">Please select atleast 1 Nature of Product.</span>
+                  <span *ngIf="!(arr?.length > 0)">Please select atleast 1 Nature of Product.</span>
+                </div>
+              </ng-container> -->
+
+
+              <!-- <ng-container [formGroup]="form">
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox1" id="checkbox1" *ngFor="let item of arr">
+                    </mat-checkbox>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox2" id="checkbox2" *ngFor="let item of arr">
+                    </mat-checkbox>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox3" id="checkbox3" *ngFor="let item of arr">
+                    </mat-checkbox>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox4" id="checkbox4" *ngFor="let item of arr">
+                    </mat-checkbox>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <mat-checkbox class="form-group" formGroupName="myCheckboxGroup" formControlName="checkbox5" id="checkbox5" *ngFor="let item of arr">
+                    </mat-checkbox>
+                  </div>
+                </ng-container> -->
+
+
+                <!-- <div formArrayName="'items'">
+                  <div *ngFor="let control of form.controls.items.controls; let i = index;" [formGroup]="control">
+                    <input type="checkbox" formControlName="checkbox" id="{{ control.controls.id.value }}">
+                    <label attr.for="{{ control.controls.id.value }}">{{ control.controls.text.value }}</label>
+                  </div>
+                </div>
+                <div [class.invalid]="!form.controls.selectedItems.valid" *ngIf="!form.controls.selectedItems.valid">
+                  checkbox group is required!
+                </div>
+                <hr>
+                <pre>{{form.controls.selectedItems.value | json}}</pre> -->
 
 
                 <div>
-                  <button mat-button matStepperNext (click)="onSubmit1()" id="btn_green" type="submit" class="btn"
+                  <button mat-button matStepperNext (click)="onSubmit1()" [disabled]="f.invalid" id="btn_green" type="submit" class="btn"
                     style="float:right;">Next</button>
                 </div>
               </form>
             </mat-step>
 
 
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
+            <!-- <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup"> -->
+                <mat-step>
+                  <form (ngSubmit)="addform(f)" #f="ngForm">
                 <ng-template matStepLabel>Fill out your address</ng-template>
                 <p>Please fill with Desciption Detail</p>
 
@@ -150,26 +247,29 @@
                   <div class="form-holder form-holder-2">
                     <fieldset>
                       <legend>Description Of {{item}}</legend>
-                      <textarea class="form-control" type="text" style="border: 0px;"
+                      <textarea class="form-control" type="text" style="border: 0px;" [(ngModel)]="nop_description"
                         class="form-control" cols="50" rows="15" placeholder="Enter Description About" (change)="Editdescription($event,i)" >
                       </textarea>
                       <legend>Proof Image</legend>
-                      <input type="file" placeholder="Proof Image" (change)="onproof($event)" class="form-control"
-                        formControlName="firstCtrl" required name="proof_image" selectedFile="proof_image">
-                      <!-- <input type="text" class="form-control" id="phone" name="phone" placeholder="PAYTM Merchant ID"
-                        required> -->
+                      <input #proofimage="ngModel" [(ngModel)]="proof_image" type="file" placeholder="Proof Image" (change)="onproof($event)"
+                        class="form-control" required name="proof_image" selectedFile="proof_image" [class.is-invalid]="proofimage.invalid && proofimage.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="proofimage.errors && (proofimage.invalid && proofimage.touched) && proofimage.errors.required">Please select an Image.</span>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <button id="btn_green" mat-button matStepperPrevious class="btn1">Back</button>
-                  <button mat-button matStepperNext (click)="onSubmit2()" type="submit" id="btn_green" name="submit2" class="btn">Next</button>
+                  <button mat-button matStepperNext (click)="onSubmit2()"  [disabled]="f.invalid" type="submit" id="btn_green" name="submit2" class="btn">Next</button>
                 </div>
               </form>
             </mat-step>
-            <mat-step [stepControl]="thirdFormGroup">
-              <form [formGroup]="thirdFormGroup">
+            <!-- <mat-step [stepControl]="thirdFormGroup">
+              <form [formGroup]="thirdFormGroup"> -->
+                <mat-step>
+                  <form (ngSubmit)="addform(f)" #f="ngForm">
 
                 <ng-template matStepLabel>Contact information</ng-template>
 
@@ -178,10 +278,14 @@
                   <div class="form-holder form-holder-2">
                     <fieldset>
                       <legend>Contact No. For Donors</legend>
-                      <input type="text" placeholder="Contact For Donors" class="form-control" formControlName="thirdCtrl"
-                        required name="contact_for_donor" [(ngModel)]="contact_for_donor">
-
+                      <input #donorcontact="ngModel" type="number" placeholder="Contact For Donors" class="form-control" required
+                        name="contact_for_donor" [(ngModel)]="contact_for_donor" [class.is-invalid]="donorcontact.invalid && donorcontact.touched"
+                        pattern="^((\\+91-?)|0)?[0-9]{10,14}$">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="donorcontact.errors && (donorcontact.invalid || donorcontact.touched) && donorcontact.errors.pattern">Please enter a valid Number.</span>
+                      <span *ngIf="donorcontact.errors && (donorcontact.invalid && donorcontact.touched) && donorcontact.errors.required">Number is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -189,16 +293,23 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Website</legend>
-                      <input type="text" placeholder="Website Link" class="form-control" formControlName="thirdCtrl"
-                        required name="ngo_website" [(ngModel)]="ngo_website">
+                      <input #ngowebsite="ngModel" type="url" placeholder="Website Link" class="form-control" name="ngo_website" required
+                        [(ngModel)]="ngo_website" [class.is-invalid]="ngowebsite.invalid && ngowebsite.touched" pattern="https?://.+">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngowebsite.errors && (ngowebsite.invalid || ngowebsite.touched) && ngowebsite.errors.pattern">Please enter a valid Website name.</span>
+                      <span *ngIf="ngowebsite.errors && (ngowebsite.invalid && ngowebsite.touched) && ngowebsite.errors.required">Website name is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Facebook Profile</legend>
-                      <input type="text" placeholder="Facebook Profile Link" class="form-control"
-                        formControlName="thirdCtrl" required name="ngo_facebook" [(ngModel)]="ngo_facebook">
+                      <input #ngofacebook="ngModel" type="text" placeholder="Facebook Profile Link" class="form-control" required
+                        name="ngo_facebook" [(ngModel)]="ngo_facebook" [class.is-invalid]="ngofacebook.invalid && ngofacebook.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngofacebook.errors && (ngofacebook.invalid && ngofacebook.touched) && ngofacebook.errors.required">Facebook profile name is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -206,16 +317,22 @@
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Instagram Profile</legend>
-                      <input type="text" placeholder="Instagram Profile" class="form-control" formControlName="thirdCtrl"
-                        required name="ngo_instagram" [(ngModel)]="ngo_instagram">
+                      <input #ngoinstagram="ngModel" type="text" placeholder="Instagram Profile" class="form-control" name="ngo_instagram"
+                        required [(ngModel)]="ngo_instagram" [class.is-invalid]="ngoinstagram.invalid && ngoinstagram.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngoinstagram.errors && (ngoinstagram.invalid && ngoinstagram.touched) && ngoinstagram.errors.required">Instagram profile name is required.</span>
+                    </div>
                   </div>
                   <div class="form-holder">
                     <fieldset>
                       <legend>NGO Twitter Profile</legend>
-                      <input type="text" placeholder="Twitter Profile Link" class="form-control"
-                        formControlName="thirdCtrl" required name="ngo_twitter" [(ngModel)]="ngo_twitter">
+                      <input #ngotwitter="ngModel" type="text" placeholder="Twitter Profile Link" class="form-control" required
+                        name="ngo_twitter" [(ngModel)]="ngo_twitter" [class.is-invalid]="ngotwitter.invalid && ngotwitter.touched">
                     </fieldset>
+                    <div class="form-group">
+                      <span *ngIf="ngotwitter.errors && (ngotwitter.invalid && ngotwitter.touched) && ngotwitter.errors.required">Twitter profile name is required.</span>
+                    </div>
                   </div>
                 </div>
 
@@ -223,7 +340,7 @@
 
                 <div>
                   <button mat-button matStepperPrevious class="btn1" id="btn_green">Back</button>
-                  <button mat-button matStepperNext (click)="onSubmit3()" type="submit" id="btn_green" class="btn">SUBMIT</button>
+                  <button mat-button matStepperNext (click)="onSubmit3()" [disabled]="f.invalid" type="submit" id="btn_green" class="btn">SUBMIT</button>
                   <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
                 </div>
               </form>

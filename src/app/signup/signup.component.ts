@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormBuilder, FormGroup, FormArray, Validators, ValidatorFn} from '@angular/forms';
 import { register1 } from '../classes/register1_class';
 import { RegistrationService } from '../service/registeration.service';
 import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select';
@@ -12,11 +12,13 @@ import { register3 } from '../classes/register3_class';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
+
 export class SignupComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
+  /*firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;*/
 
   ngo_name:string;
   ngo_email:string;
@@ -50,32 +52,83 @@ export class SignupComponent implements OnInit {
   nop_arr:any=null;
   flag:number=0;
   fk_ngo_nop_name:string="";
+  form: FormGroup;
+
+  /*items = [
+    {key: 'item1', text: 'value1'},
+    {key: 'item2', text: 'value2'},
+    {key: 'item3', text: 'value3'},
+    {key: 'item4', text: 'value4'},
+    {key: 'item5', text: 'value5'},
+  ];*/
 
   constructor(private _formBuilder: FormBuilder,private _registrationservice:RegistrationService,private _route:Router) { }
 
+
+
+  /*requireCheckboxesToBeCheckedValidator(minRequired = 1):ValidatorFn {
+    return function validate (formGroup: FormGroup) {
+      let checked = 0;
+      Object.keys(formGroup.controls).forEach(key => {
+        const control = formGroup.controls[key];
+        if (control.value === true) {
+          checked ++;
+        }
+      });
+      if (checked < minRequired) {
+        return {
+          requireCheckboxesToBeChecked: true,
+        };
+      }
+      return null;
+    };
+  }*/
+
   ngOnInit(): void
   {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+     /*// create checkbox group
+     let checkboxGroup = new FormArray(this.items.map(item => new FormGroup({
+      id: new FormControl(item.key),
+      text: new FormControl(item.text),
+      checkbox: new FormControl(false)
+    })));
+    // create a hidden reuired formControl to keep status of checkbox group
+    let hiddenControl = new FormControl(this.mapItems(checkboxGroup.value), Validators.required);
+    // update checkbox group's value to hidden formcontrol
+    checkboxGroup.valueChanges.subscribe((v) => {
+      console.log(v);
+      hiddenControl.setValue(this.mapItems(v));
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
+    this.form = new FormGroup({
+      items: checkboxGroup,
+      selectedItems: hiddenControl
+    });*/
 
 
+    /*this.form.setErrors({required: true});
+    this.form.valueChanges.subscribe((newValue) => {
+    if (newValue.checkbox1 === false || newValue.checkbox2 === false || newValue.checkbox3 === false) {
+      this.form.setErrors(null);
+    } else {
+      this.form.setErrors({required: false});
+    }
+  });*/
 
     this._registrationservice.getallnop().subscribe(
     (data:any)=>{
 
       this.nop_arr=data;
-      console.log(data)
+
 
     }
     );
   }
+
+  /*mapItems(items) {
+    let selectedItems = items.filter((item) => item.checkbox).map((item) => item.id);
+    return selectedItems.length ? selectedItems : null;
+  }*/
+
   onSubmit1()
   {
     //console.log(this.ngo_landmark);
@@ -94,9 +147,9 @@ export class SignupComponent implements OnInit {
   {
 
     this.selectedfile=<File>value.target.files[0];
-    console.log(this.selectedfile.name);
+    //console.log(this.selectedfile.name);
     this.proof_image.push(this.selectedfile);
-    console.log(this.proof_image);
+    //console.log(this.proof_image);
   }
   onselect(value)
   {
@@ -121,17 +174,17 @@ export class SignupComponent implements OnInit {
     fd.append('ngo_pincode',this.ngo_pincode);
     fd.append('fk_ngo_nop_name',this.fk_ngo_nop_name);
 
-    console.log('fd',JSON.stringify(fd));
-
     this._registrationservice.register1(fd).subscribe(
     (data:register1[])=>
     {
 
       console.log(data);
-      // localStorage.setItem('ngo_email',this.ngo_email);
+      localStorage.setItem('ngo_email',this.ngo_email);
 
     }
     );
+
+    console.log(this.ngo_email,this.fk_ngo_nop_name,this.selectedfile.name,this.proof_image);
 
     for(let k=0;k<this.arr.length;k++)
     {
@@ -146,22 +199,27 @@ export class SignupComponent implements OnInit {
       }
       );
     }
-console.log(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter);
+
+    console.log(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter);
+
     var fd2=new FormData();
-    // fd2.append('fk_ngo_email','jay@gmail.comcheck');
-    // fd2.append('contact_for_donor',this.contact_for_donor);
-    // fd2.append('ngo_website',this.ngo_website);
-    // fd2.append('ngo_facebook',this.ngo_facebook);
-    // fd2.append('ngo_instagram',this.ngo_instagram);
-    // fd2.append('ngo_twitter',this.ngo_twitter);
+    fd2.append('fk_ngo_email',this.ngo_email);
+    fd2.append('contact_for_donor',this.contact_for_donor);
+    fd2.append('ngo_website',this.ngo_website);
+    fd2.append('ngo_facebook',this.ngo_facebook);
+    fd2.append('ngo_instagram',this.ngo_instagram);
+    fd2.append('ngo_twitter',this.ngo_twitter);
 
-    //console.log(JSON.stringify(fd2));
-
-    this._registrationservice.add_final_details(new register3(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter)).subscribe(
-    (data:register3[])=>{
+    this._registrationservice.add_final_details(fd2).subscribe(
+    (data:any)=>{
       console.log(data);
     }
     );
+    /*this._registrationservice.add_final_details(new register3(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_facebook,this.ngo_instagram,this.ngo_twitter)).subscribe(
+      (data:register3[])=>{
+        console.log(data);
+      }
+      );*/
   }
 
 
@@ -192,5 +250,5 @@ console.log(this.ngo_email,this.contact_for_donor,this.ngo_website,this.ngo_face
     }
 
   }
-
+  addform(f){}
 }

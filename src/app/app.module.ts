@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './menu/menu.component';
 import { ChartComponent } from './chart/chart.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ChartComponent } from './chart/chart.component';
     DataTableComponent,
     MenuComponent,
     ChartComponent,
+    ViewprofileComponent,
 
   ],
   imports: [

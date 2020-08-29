@@ -6,6 +6,7 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { DataTableComponent } from './data-table/data-table.component';
 import { MenuComponent } from './menu/menu.component';
 import { ChartComponent } from './chart/chart.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'forget',component:ForgetpasswordComponent},
   {path:'menu',component:MenuComponent,children:[
   {path:'tables',component:DataTableComponent},
-  {path:'charts',component:ChartComponent}
+  {path:'charts',component:ChartComponent},
+  {path:'viewprofile',component:ViewprofileComponent},
 ]}
 ];
 

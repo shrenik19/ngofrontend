@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container" style="height:100%;">
-    <mat-sidenav 
+    <mat-sidenav
       #drawer
       class="sidenav"
       fixedInViewport="true"
@@ -11,7 +11,7 @@
       <mat-nav-list>
         <a mat-list-item routerLink="tables">  <img src="{{'http://localhost:3000/images/home.png'}}" height="45px" width="50px"><td >
         <td><b><h4 style="font-size: 14px;">Home</h4></b></td></a>
-        <a mat-list-item routerLink="adminprofile">  <img src="{{'http://localhost:3000/images/viewprofile.jpg'}}" height="40px" width="40px"><td >
+        <a mat-list-item routerLink="viewprofile">  <img src="{{'http://localhost:3000/images/viewprofile.jpg'}}" height="40px" width="40px"><td >
         <td><b><h4 style="font-size: 14px;">View Profile</h4></b></td></a>
         <a mat-list-item routerLink="charts"><img src="{{'http://localhost:3000/images/category.png'}}" height="40px" width="40px"><td >
           <td><b><h4 style="font-size: 14px;">Manage Category</h4></b></td></a>
@@ -36,7 +36,7 @@
           (click)="drawer.toggle()"
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">
-  
+
           </mat-icon>
         </button>
         <span><img src="{{'http://localhost:3000/images/logo1.jpg'}}" style="height:53px; width:140px; zoom:120%; " ></span>
